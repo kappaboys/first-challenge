@@ -28,25 +28,16 @@ export default class App extends Component {
 
   searchBarChange(e) {
     var str = e.target.value;
-    if (str.length > 0) {
-      var filteredData = this.state.userData.filter((el) => {
-      var searchValue = el.name.toLowerCase();
-        return searchValue.indexOf(str) !== -1;
-      });
-      console.log(filteredData);
-      this.setState({userData:filteredData, searchQuery: str});
-    } else {
-      this.setState({userData: this.state.allUsers});
-    }
+    this.setState({searchQuery: str});
     
   }
 
   render() {
-    
+    var filtered = this.state.userData.filter(el => el.name.toLowerCase().indexOf(this.state.searchQuery) !== -1);
     return (
       <div className="container app">
         <SearchBar inputSearch={e => this.searchBarChange(e)} />
-        <UserData userData={this.state.userData} user={this.state.user} 
+        <UserData userData={filtered} user={this.state.user} 
         onItemClick={user => this.setUser(user)} />
       </div>
     );
