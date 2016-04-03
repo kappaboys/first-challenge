@@ -16,7 +16,7 @@ export default class UserData extends Component {
 			<div className="row">
 				<div className="col-md-4"><CurrentUser user={this.props.user} /></div>
 				<div className="col-md-8">
-					<table className="table-bordered user-data">
+					<table className="table table-bordered table-striped user-data">
 						<thead>
 							<tr>
 								<th>Image</th>
